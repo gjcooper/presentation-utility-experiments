@@ -1,0 +1,55 @@
+# Visual Stgress Test
+# Created by Gavin Cooper
+# 13 / 04 / 2015
+# University of Newcastle	
+
+int repeats = 1000;
+#Simple box flips
+evt1.set_stimulus(blackbox);
+evt1.set_event_code("bb");
+evt2.set_stimulus(whitebox);
+evt2.set_event_code("wb");
+loop
+	int i = 1
+until
+	i > repeats
+begin	
+	trial1.present();
+	trial2.present();
+	i = i + 1;
+end;
+
+wait_interval(500);
+#Stress 1 orig Size
+evt1.set_stimulus(stress1);
+evt1.set_event_code("s1");
+evt2.set_stimulus(stress2);
+evt2.set_event_code("s2");
+loop
+	int i = 1
+until
+	i > repeats
+begin	
+	trial1.present();
+	trial2.present();
+	i = i + 1;
+end;
+wait_interval(500);
+#Stress 1 reSize
+s1.set_load_size(display_device.height(), display_device.width(), 0);
+s1.load();
+s2.set_load_size(display_device.height(), display_device.width(), 0);
+s2.load();
+evt1.set_stimulus(stress1);
+evt1.set_event_code("s1r");
+evt2.set_stimulus(stress2);
+evt2.set_event_code("s2r");
+loop
+	int i = 1
+until
+	i > repeats
+begin	
+	trial1.present();
+	trial2.present();
+	i = i + 1;
+end;

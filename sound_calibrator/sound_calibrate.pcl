@@ -1,0 +1,157 @@
+#Setup globals___________________________________________
+string sndStr = "";
+string earStr = "Left";
+double pan = -1.0;
+int currSnd = 1;
+double attenuation = 0.3; #Sensible starting attenuation
+double step_size = 0.01;
+bool firstCall = false;
+bool looping = false;
+bool autoMove = false; #Not in general use - automatically cycles through sounds in the array
+
+#Pull in sounds from folder
+array<string> sounds[0];
+get_directory_files(stimulus_directory, sounds);
+if sounds.count() == 0 then
+	exit("Must be at least one sound in the sounds directory");
+end;
+loop
+	int i = 1;
+until
+	i > sounds.count()
+begin
+	sounds[i] = sounds[i].replace(stimulus_directory, "");
+	i = i + 1;
+end;
+#________________________________________________________
+
+# play the sound repeatedly until a response_____________
+sub
+   int play_sound_loop
+begin    
+   int count = response_manager.total_response_count();
+   loop until
+      response_manager.total_response_count() > count
+   begin
+      trial1.present(); 
+   end;
+   return response_manager.last_response();
+end;
+#________________________________________________________
+
+# play the sound once and wait until a response__________
+sub
+   int play_sound
+begin    
+   int count = response_manager.total_response_count();
+	if firstCall then
+		trial1.present();
+		firstCall = false;
+	end;
+   loop until
+      response_manager.total_response_count() > count
+   begin
+      wait_interval(100); 
+   end;
+   return response_manager.last_response();
+end;
+#________________________________________________________
+
+sub
+   int auto_play_sound
+begin    
+   trial1.present();
+	return 5;
+end;
+#________________________________________________________
+ 
+# gets user input for the step size______________________
+sub 
+   set_step_size
+begin 
+   string size;
+   system_keyboard.set_max_length( 1 );
+   string last = "1";
+   loop until 
+      last == "" 
+   begin
+      enter.set_caption( "Enter text size: " + size );
+      enter.redraw();
+      prompt.present();
+      last = system_keyboard.get_input();
+      if (last != "") then
+         size = size + last
+      end
+   end;
+   step_size = double( size );
+end;
+#________________________________________________________
+
+# main loop______________________________________________
+loop until false begin
+	#Set up the screen feedback
+   att.set_caption( "Attenuation: " + string(attenuation) );
+   att.redraw();
+   step.set_caption( "Step Size: " + string(step_size) );
+   step.redraw();
+   sndStr = sounds[currSnd];
+	snd.set_caption( "Testing Snd: " + sndStr );
+   snd.redraw();
+	ear.set_caption( "Ear: " + earStr );
+   ear.redraw();
+   info.present();
+	#Set sound properties ear/attenuation/current sound
+   theSound.set_attenuation( attenuation );
+	theSound.set_pan(pan);
+	wav.unload();
+	wav.set_filename(stimulus_directory + sounds[currSnd]);
+	wav.load();
+	
+   int res = 0;
+   if (autoMove) then
+		res = auto_play_sound();
+	elseif (looping) then
+		res = play_sound_loop();
+	else
+	   res = play_sound();   
+	end;
+	if (res == 1) then
+		set_step_size();
+   elseif (res == 2) then
+      attenuation = attenuation + step_size;
+      if (attenuation > 1.0) then attenuation = 1.0 end
+   elseif (res == 3) then
+      attenuation = attenuation - step_size;
+      if (attenuation < 0.0) then attenuation = 0.0 end
+   elseif (res == 4) then
+		if (currSnd != 1) then
+			currSnd = currSnd - 1;
+		end;
+		sndStr = sounds[currSnd];
+   elseif (res == 5) then
+      if (currSnd != sounds.count()) then
+			currSnd = currSnd + 1;
+		end;
+		sndStr = sounds[currSnd];
+	elseif (res == 6) then
+		pan = -pan;
+      if (pan == -1.0) then
+			earStr = "Left";
+		else
+			earStr = "Right";
+		end;
+   elseif (res == 7) then
+		firstCall = true;
+	elseif (res == 8) then
+		looping = !looping;
+		if looping then
+			loopTxt.set_caption("Looping: ON");
+			loopTxt.redraw();
+		else
+			loopTxt.set_caption("Looping: OFF");
+			loopTxt.redraw();
+		end;
+   end;
+	#Adjustment - for some reason helps with display
+   attenuation = double( int( attenuation * 1000000.0 + 0.5) ) / 1000000.0;
+end                                   

@@ -1,0 +1,47 @@
+# Port Test
+# Created by Gavin Cooper
+# 13 / 04 / 2015
+# University of Newcastle	
+
+output_port oport = output_port_manager.get_port(1);
+string rtxt = "";
+
+loop
+until false
+begin
+	oopic.present();
+	rtxt = system_keyboard.get_input();
+	default.present();
+	if rtxt == "c" then
+		break;
+	elseif rtxt == "r" then
+		rpic.present();
+		loop
+		until
+			false
+		begin
+			oport.send_code(255);
+			wait_interval(500);
+		end;
+	else
+		oport.send_code(int(rtxt));
+		wait_interval(500);
+	end;
+end;
+
+
+loop
+	int i = 1
+until
+	false
+begin
+	ctxt.set_caption("Cycling 1-255: " + string(i));
+	ctxt.redraw();
+	cpic.present();
+	oport.send_code(i);
+	wait_interval(1000);
+	i = i + 1;
+	if i > 255 then
+		i = 1;
+	end;
+end;
