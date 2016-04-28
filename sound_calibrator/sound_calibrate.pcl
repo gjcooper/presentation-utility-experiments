@@ -7,6 +7,7 @@ double attenuation = 0.3; #Sensible starting attenuation
 double step_size = 0.01;
 bool firstCall = false;
 bool looping = false;
+bool repeating = false;
 bool autoMove = false; #Not in general use - automatically cycles through sounds in the array
 
 #Pull in sounds from folder
@@ -34,6 +35,27 @@ begin
       response_manager.total_response_count() > count
    begin
       trial1.present(); 
+   end;
+   return response_manager.last_response();
+end;
+
+# play the sound repeatedly with 2 second gaps until a response_____________
+sub
+   int play_sound_repeat
+begin    
+   int count = response_manager.total_response_count();
+   loop until
+      response_manager.total_response_count() > count
+   begin
+      trial1.present();
+		int time = clock.time();
+		loop until
+			clock.time() > time+2000
+		begin
+			if response_manager.total_response_count() > count then
+				return response_manager.last_response();
+			end;
+		end;
    end;
    return response_manager.last_response();
 end;
@@ -112,6 +134,8 @@ loop until false begin
 		res = auto_play_sound();
 	elseif (looping) then
 		res = play_sound_loop();
+	elseif (repeating) then
+		res = play_sound_repeat();
 	else
 	   res = play_sound();   
 	end;
@@ -144,12 +168,23 @@ loop until false begin
 		firstCall = true;
 	elseif (res == 8) then
 		looping = !looping;
+		repeating = false;
 		if looping then
 			loopTxt.set_caption("Looping: ON");
 			loopTxt.redraw();
 		else
 			loopTxt.set_caption("Looping: OFF");
 			loopTxt.redraw();
+		end;
+	elseif (res == 9) then
+		repeating = !repeating;
+		looping = false;
+		if repeating then
+			repeatTxt.set_caption("Repeating: ON");
+			repeatTxt.redraw();
+		else
+			repeatTxt.set_caption("Repeating: OFF");
+			repeatTxt.redraw();
 		end;
    end;
 	#Adjustment - for some reason helps with display
