@@ -10,6 +10,10 @@ bool looping = false;
 bool repeating = false;
 bool autoMove = false; #Not in general use - automatically cycles through sounds in the array
 
+output_file results = new output_file();
+results.open("Calibration-" + date_time() + ".dat", false);
+results.print_line("Sound\tEar\tAttenuation");
+
 #Pull in sounds from folder
 array<string> sounds[0];
 get_directory_files(stimulus_directory, sounds);
@@ -109,6 +113,15 @@ begin
 end;
 #________________________________________________________
 
+# gets user input for the step size______________________
+sub 
+   record_value
+begin 
+   results.print_line(sounds[currSnd] + "\t" + earStr + "\t" + string(attenuation));
+end;
+#________________________________________________________
+
+
 # main loop______________________________________________
 loop until false begin
 	#Set up the screen feedback
@@ -186,6 +199,8 @@ loop until false begin
 			repeatTxt.set_caption("Repeating: OFF");
 			repeatTxt.redraw();
 		end;
+   elseif (res == 10) then
+		record_value();
    end;
 	#Adjustment - for some reason helps with display
    attenuation = double( int( attenuation * 1000000.0 + 0.5) ) / 1000000.0;

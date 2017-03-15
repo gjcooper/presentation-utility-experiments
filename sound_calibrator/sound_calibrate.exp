@@ -1,5 +1,5 @@
-<ver>18.1</ver>
-<efn>C:\Users\FNL-Lab1\Desktop\Experiments\PresentationUtilities\sound calibrator\sound_calibrate.exp</efn>
+<ver>19</ver>
+<efn>C:\Users\gjc216\My Work\Git Repositories\temp_code_store\presentation-utility-experiments\sound_calibrator\sound_calibrate.exp</efn>
 <author></author>
 <con>
 <pause>None</pause>
@@ -12,6 +12,11 @@
 <resume_code></resume_code>
 <send_output>0</send_output>
 <start_code></start_code>
+<tqcs>130</tqcs>
+<tqds>2</tqds>
+<tqms>0</tqms>
+<tqt>9</tqt>
+<tqu>0</tqu>
 </con>
 <dbi></dbi>
 <dbs>button</dbs>
@@ -34,11 +39,11 @@
 <lfn></lfn>
 </docs>
 <dp_list></dp_list>
-<dsd>C:\Users\FNL-Lab1\Desktop\Experiments\PresentationUtilities\sound calibrator\sounds</dsd>
-<dxv>6</dxv>
+<dsd>C:\Users\gjc216\My Work\Git Repositories\temp_code_store\presentation-utility-experiments\sound_calibrator\sounds</dsd>
+<dxv>8</dxv>
 <efs>
-<filename>C:\Users\FNL-Lab1\Desktop\Experiments\PresentationUtilities\sound calibrator\sound_calibrate.sce</filename>
-<filename>C:\Users\FNL-Lab1\Desktop\Experiments\PresentationUtilities\sound calibrator\sound_calibrate.pcl</filename>
+<filename>C:\Users\gjc216\My Work\Git Repositories\temp_code_store\presentation-utility-experiments\sound_calibrator\sound_calibrate.sce</filename>
+<filename>C:\Users\gjc216\My Work\Git Repositories\temp_code_store\presentation-utility-experiments\sound_calibrator\sound_calibrate.pcl</filename>
 </efs>
 <exclusive_mouse>1</exclusive_mouse>
 <exp_version></exp_version>
@@ -46,7 +51,14 @@
 <man>
 <cfg>
 <dcfg>
+<en>0</en>
+<guid>{498A30DA-F02B-4C66-A221-1502D70B88BE}</guid>
 <name>Default configuration</name>
+<r>
+<plat>2147483647</plat>
+<rd>0</rd>
+<ss>0</ss>
+</r>
 <ss>
 <sd></sd>
 <sid>-1</sid>
@@ -104,20 +116,22 @@
 </ftp>
 <idc>0</idc>
 <idt>1000</idt>
+<ilc>0</ilc>
 <ip_chans>
 <chan>
 <name>trigger channel</name>
 <pindex>4294967295</pindex>
 </chan>
 </ip_chans>
-<isb>10000</isb>
-<lfd>C:\Users\FNL-Lab1\Desktop\Experiments\PresentationUtilities\sound calibrator</lfd>
+<lfd>C:\Users\gjc216\My Work\Git Repositories\temp_code_store\presentation-utility-experiments\sound_calibrator</lfd>
 <lnb>1</lnb>
 <lno>0</lno>
 <log>
 <append_counter>0</append_counter>
 <delimiter>9</delimiter>
 <general_list>1</general_list>
+<its>0</its>
+<meta>0</meta>
 <pien>0</pien>
 <set_def_file></set_def_file>
 <stimulus_list>0</stimulus_list>
@@ -128,32 +142,22 @@
 </log>
 <lol>1</lol>
 <lpr></lpr>
+<lslset>
+<col>0</col>
+<def></def>
+<mod>0</mod>
+<name>Presentation</name>
+<use>0</use>
+</lslset>
 <maxpv></maxpv>
-<minpv></minpv>
-<mss>4</mss>
+<minpv>19.0</minpv>
 <nam>Example scenario sound_calibrate</nam>
 <one_processor>2</one_processor>
 <oports></oports>
 <out_encrypt_key></out_encrypt_key>
 <pi_list></pi_list>
+<plat>1</plat>
 <port_devices>
-<device>
-<parameters>
-<cts>0</cts>
-<dsrin>0</dsrin>
-<dsrout>0</dsrout>
-<dtr>disable</dtr>
-<rts>disable</rts>
-<set_fifo>1</set_fifo>
-<spd></spd>
-<spp></spp>
-<spr></spr>
-<sps></sps>
-</parameters>
-<piai>COM1</piai>
-<pian>Serial Port</pian>
-<pihpn>COM1</pihpn>
-</device>
 <device>
 <parameters>
 <cts>0</cts>
@@ -172,6 +176,7 @@
 <pihpn>COM3</pihpn>
 </device>
 </port_devices>
+<pversion>2</pversion>
 <rdl>
 <device>
 <abs_axis>
@@ -268,49 +273,85 @@
 <name>HID-compliant mouse</name>
 </device>
 <device>
-<axis>
+<device_type>3</device_type>
+<dx_device_type>0</dx_device_type>
+<name>Standard PS/2 Keyboard</name>
+</device>
+<device>
+<abs_axis>
 <dead_zone>0</dead_zone>
 <max>1000</max>
 <min>-1000</min>
-<name>X Axis</name>
+<name>X-axis</name>
 <saturation>1</saturation>
-</axis>
-<axis>
+</abs_axis>
+<abs_axis>
 <dead_zone>0</dead_zone>
 <max>1000</max>
 <min>-1000</min>
-<name>Y Axis</name>
+<name>Y-axis</name>
 <saturation>1</saturation>
-</axis>
+</abs_axis>
 <axis>
-<dead_zone>0</dead_zone>
 <max>1000</max>
 <min>-1000</min>
-<name>Z Axis</name>
-<saturation>1</saturation>
+<name>X-axis</name>
+<restricted>1</restricted>
+<scale>1</scale>
 </axis>
 <axis>
-<dead_zone>0</dead_zone>
 <max>1000</max>
 <min>-1000</min>
-<name>X Rotation</name>
-<saturation>1</saturation>
+<name>Y-axis</name>
+<restricted>1</restricted>
+<scale>1</scale>
 </axis>
 <axis>
-<dead_zone>0</dead_zone>
 <max>1000</max>
 <min>-1000</min>
-<name>Y Rotation</name>
-<saturation>1</saturation>
+<name>Wheel</name>
+<restricted>1</restricted>
+<scale>1</scale>
 </axis>
-<device_type>1</device_type>
-<dx_device_type>21</dx_device_type>
-<name>XBOX 360 For Windows (Controller)</name>
+<device_type>2</device_type>
+<dx_device_type>0</dx_device_type>
+<max_raw_pos>65535</max_raw_pos>
+<min_raw_pos>0</min_raw_pos>
+<name>Dell Touchpad</name>
 </device>
 <device>
 <device_type>4</device_type>
-<dx_device_type>24</dx_device_type>
-<name>CUI v1.0</name>
+<dx_device_type>17</dx_device_type>
+<name>HID-compliant consumer control device</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>HID-compliant system controller</name>
+</device>
+<device>
+<device_type>4</device_type>
+<dx_device_type>17</dx_device_type>
+<name>Airplane Mode Switch</name>
+</device>
+<device>
+<axis>
+<dead_zone>0</dead_zone>
+<max>1000</max>
+<min>-1000</min>
+<name>X-axis</name>
+<saturation>1</saturation>
+</axis>
+<axis>
+<dead_zone>0</dead_zone>
+<max>1000</max>
+<min>-1000</min>
+<name>Y-axis</name>
+<saturation>1</saturation>
+</axis>
+<device_type>6</device_type>
+<dx_device_type>0</dx_device_type>
+<name>gameport device</name>
 </device>
 <device>
 <device_type>9</device_type>
@@ -344,32 +385,94 @@
 <restricted>1</restricted>
 <scale>1</scale>
 </axis>
+<buts>
+<but>
+<from>
+<states>down;</states>
+<type>2</type>
+</from>
+<max_x>
+<inc>1</inc>
+<origin>2</origin>
+<units>2</units>
+<used>0</used>
+<value>0</value>
+</max_x>
+<max_y>
+<inc>1</inc>
+<origin>2</origin>
+<units>2</units>
+<used>0</used>
+<value>0</value>
+</max_y>
+<min_x>
+<inc>1</inc>
+<origin>2</origin>
+<units>2</units>
+<used>0</used>
+<value>0</value>
+</min_x>
+<min_y>
+<inc>1</inc>
+<origin>2</origin>
+<units>2</units>
+<used>0</used>
+<value>0</value>
+</min_y>
+<name>Pointer Down</name>
+<primary>1</primary>
+<to>
+<states>down;</states>
+<type>5</type>
+</to>
+</but>
+<but>
+<from>
+<states>down;</states>
+<type>5</type>
+</from>
+<max_x>
+<inc>1</inc>
+<origin>2</origin>
+<units>2</units>
+<used>0</used>
+<value>0</value>
+</max_x>
+<max_y>
+<inc>1</inc>
+<origin>2</origin>
+<units>2</units>
+<used>0</used>
+<value>0</value>
+</max_y>
+<min_x>
+<inc>1</inc>
+<origin>2</origin>
+<units>2</units>
+<used>0</used>
+<value>0</value>
+</min_x>
+<min_y>
+<inc>1</inc>
+<origin>2</origin>
+<units>2</units>
+<used>0</used>
+<value>0</value>
+</min_y>
+<name>Pointer Up</name>
+<primary>1</primary>
+<to>
+<states>down;</states>
+<type>2</type>
+</to>
+</but>
+</buts>
 <device_type>5</device_type>
 <dx_device_type>0</dx_device_type>
-<inpc>1</inpc>
 <name>pointing device</name>
 <uoh>1</uoh>
 <upc>0</upc>
 <uvt>1</uvt>
-</device>
-<device>
-<axis>
-<dead_zone>0</dead_zone>
-<max>1000</max>
-<min>-1000</min>
-<name>X-axis</name>
-<saturation>1</saturation>
-</axis>
-<axis>
-<dead_zone>0</dead_zone>
-<max>1000</max>
-<min>-1000</min>
-<name>Y-axis</name>
-<saturation>1</saturation>
-</axis>
-<device_type>6</device_type>
-<dx_device_type>0</dx_device_type>
-<name>gameport device</name>
 </device>
 </rdl>
 <refchg>1</refchg>
@@ -378,7 +481,6 @@
 <reschg>1</reschg>
 <rng>0</rng>
 <rts>0</rts>
-<sbs>100000</sbs>
 <sce>
 <idv>
 <device_type>3</device_type>
@@ -389,6 +491,7 @@
 <label></label>
 <offset>31</offset>
 </idv>
+<overrides></overrides>
 <sfn>all_scenarios</sfn>
 </sce>
 <sce>
@@ -404,6 +507,7 @@
 <ibn>P</ibn>
 <ibn>L</ibn>
 <ibn>R</ibn>
+<ibn>K</ibn>
 <idn>Keyboard</idn>
 <index>0</index>
 <index>1</index>
@@ -414,6 +518,8 @@
 <index>6</index>
 <index>7</index>
 <index>8</index>
+<index>9</index>
+<label></label>
 <label></label>
 <label></label>
 <label></label>
@@ -432,8 +538,10 @@
 <offset>25</offset>
 <offset>38</offset>
 <offset>19</offset>
+<offset>37</offset>
 </idv>
-<sfn>C:\Users\FNL-Lab1\Desktop\Experiments\PresentationUtilities\sound calibrator\sound_calibrate.sce</sfn>
+<overrides></overrides>
+<sfn>C:\Users\gjc216\My Work\Git Repositories\temp_code_store\presentation-utility-experiments\sound_calibrator\sound_calibrate.sce</sfn>
 </sce>
 <sct>
 <capture_device>
@@ -451,7 +559,10 @@
 <resp_dev>
 <combine>0</combine>
 <ignore>1000</ignore>
+<isr>0</isr>
 <max_rec_dur>10</max_rec_dur>
+<md></md>
+<mio></mio>
 <off_inter>200</off_inter>
 <off_thresh>0.02</off_thresh>
 <onset_mode>0</onset_mode>
@@ -463,10 +574,9 @@
 <sde>
 <buffer_length>1000</buffer_length>
 <custom_buf>primary</custom_buf>
+<default>1</default>
 <dup_channels>0</dup_channels>
 <ex_period>0</ex_period>
-<halt_on_drop>0</halt_on_drop>
-<halt_on_drop_count>1</halt_on_drop_count>
 <halt_on_underrun>0</halt_on_underrun>
 <max_mix_length>400</max_mix_length>
 <min_mix_length>10</min_mix_length>
@@ -484,7 +594,6 @@
 <smd>16</smd>
 <smr>44100</smr>
 <srs>0</srs>
-<ssb>2000</ssb>
 <sse>
 <s>
 <a></a>
@@ -511,3 +620,4 @@
 <unc>100</unc>
 <upb>0</upb>
 <urp>0</urp>
+<wob>1</wob>
